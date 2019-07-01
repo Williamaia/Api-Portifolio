@@ -2,8 +2,10 @@ const mongoose = require ('mongoose');
 
 const SobreSchema = new mongoose.Schema({
     title: String,
-    subtitle: String,
-    description: String
+    subtitlebio: String,
+    biografia: String,
+    subtitleprof: String,
+    profissao: String
 });
 
 module.exports = mongoose.model('Sobre', SobreSchema);

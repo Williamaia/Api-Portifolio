@@ -7,9 +7,12 @@ module.exports =  {
     },
 
     async store(req, res) {
-        const home = req.body;
-        const savedHome = await Home.create(home);
-        return res.json(savedHome);
+        let home = req.body;
+        const { photograph, curriculum } = req.files;
+        photograph && (home.photograph = photograph[0].filename)
+        curriculum && (home.curriculum = curriculum[0].filename)
+        const homeNew = await Home.create(home);
+        return res.json(homeNew);
     },
 
     async show(req, res) {

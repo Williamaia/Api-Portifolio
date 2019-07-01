@@ -7,11 +7,13 @@ module.exports =  {
     },
 
     async store(req, res) {
-        const image = req.file.filename;
-        const portifolio = req.body;
-        portifolio.image = image; 
-        const savedPortifolio = await Portifolio.create(portifolio);   
-        return res.json(savedPortifolio);
+        const {title} = req.body;
+        const {filename: image} = req.file;
+        const portifolio = await Portifolio.create({
+            title,
+            image
+        });
+        return res.json(portifolio);
     },
 
     async show(req, res) {
